@@ -74,7 +74,7 @@ async def get_one_contact(contact_id: int,
     return contact
 
 
-@app.get('/contact/{name}', response_model=ContactResponse)
+@app.get('/contact/search_by_name/{name}', response_model=ContactResponse)
 async def search_by_name(name: str = 'Stas',
                          db: Session = Depends(get_db)):
     contact = db.query(Contact).filter(Contact.name == name).first()
@@ -83,7 +83,7 @@ async def search_by_name(name: str = 'Stas',
     return contact
 
 
-@app.get('/contact/{surname}', response_model=ContactResponse)
+@app.get('/contact/search_by_surname/{surname}', response_model=ContactResponse)
 async def search_by_surname(surname: str = 'Vasilenko',
                             db: Session = Depends(get_db)):
     contact = db.query(Contact).filter(Contact.surname == surname).first()
@@ -92,7 +92,7 @@ async def search_by_surname(surname: str = 'Vasilenko',
     return contact
 
 
-@app.get('/contact/{email}', response_model=ContactResponse)
+@app.get('/contact/search_by_email/{email}', response_model=ContactResponse)
 async def search_by_email(email: str = 'grenui@gmail.com',
                           db: Session = Depends(get_db)):
     contact = db.query(Contact).filter(Contact.email == email).first()
